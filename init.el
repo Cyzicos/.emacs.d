@@ -9,17 +9,19 @@
 	     '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
+(add-hook 'after-init-hook 'global-company-mode)
+
 (when (not package-archive-contents)
-  (package-refresh-contents))
+  (package-refresh-contents)
+  )
 
 (defvar myPackages
   '(better-defaults
-    ;;elpy
-    flycheck
     material-theme
     magit
     json-mode
-    py-autopep8))
+    eglot
+    company))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
@@ -32,38 +34,23 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 (load-theme 'material t) ;; load material theme
 (global-linum-mode t) ;; enable line numbers globally
-
-;; PYTHON CONFIGURATION
-;; --------------------------------------
-
-;;(elpy-enable)
-(require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 (ido-mode 1)
 (electric-indent-mode 0)
-;; use flycheck not flymake with elpy
-;;(when (require 'flycheck nil t)
-;;  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; enable autopep8 formatting on save
-
-;;(require 'py-autopep8)
-;;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
 (setq x-select-enable-clipboard t)
 
+;; ;; PYTHON CONFIGURATION
+;; ;; --------------------------------------
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 
-;; init.el ends here
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    ( wgrep magit py-autopep8 material-theme flycheck elpy ein better-defaults))))
+ '(package-selected-packages (quote (company eglot))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
