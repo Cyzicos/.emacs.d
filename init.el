@@ -39,6 +39,19 @@
 (electric-indent-mode 0)
 (setq x-select-enable-clipboard t)
 
+
+(defun format_on_save ()
+  ;; Format on save
+  (when (eq major-mode 'python-mode)
+    (eglot-format)
+)
+)
+
+(add-hook 'before-save-hook #'format_on_save)
+
+
+
+
 ;; ;; PYTHON CONFIGURATION
 ;; ;; --------------------------------------
 (add-hook 'python-mode-hook 'eglot-ensure)
