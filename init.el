@@ -36,14 +36,14 @@
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
-;;(elpy-enable)
+(elpy-enable)
 (global-set-key (kbd "C-x g") 'magit-status)
 (ido-mode 1)
 (electric-indent-mode 0)
 ;; use flycheck not flymake with elpy
-;;(when (require 'flycheck nil t)
-;;  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;  (add-hook 'elpy-mode-hook 'flycheck-mode))
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; enable autopep8 formatting on save
 
