@@ -52,17 +52,7 @@
 
 (setq x-select-enable-clipboard t)
 
-;; ECLIM
 
-
-(require 'eclim)
-(add-hook 'java-mode-hook 'eclim-mode)
-;;(require 'eclimd)
-
-
-(custom-set-variables
-  '(eclim-eclipse-dirs '("~/eclipse/java-2018-12/eclipse"))
-  '(eclim-executable "~/eclipse/java-2018-12/eclipse/eclimd"))
 
 
 (setq help-at-pt-display-when-idle t)
@@ -73,15 +63,9 @@
 ;; (require 'auto-complete-config)
 ;; (ac-config-default)
 
-;; ;; add the emacs-eclim source
-;; (require 'ac-emacs-eclim-source)
-;; (ac-emacs-eclim-config)
 
 
 
-;; ECLIM
-
-;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -89,7 +73,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ac-emacs-eclim eclim wgrep magit py-autopep8 material-theme flycheck elpy ein better-defaults))))
+    (wgrep magit py-autopep8 material-theme flycheck elpy ein better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
